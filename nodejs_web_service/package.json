@@ -1,15 +1,17 @@
 {
-  "name": "mongodb-web-server-unitary-test",
+  "name": "nodejs_mongodb_web_server",
   "version": "0.1.0",
-  "scripts": {
-    "test": "newman run test.json"
-  },
-  "description": "MongoDB Web server unitary tests with newman",
-  "main": "test.json",
+  "description": "A Node.js MongoDB Web server",
+  "main": "mongodb_server.js",
   "dependencies": {
-    "newman": "^4.2.2"
+    "express": "^4.16.4",
+    "mongodb": "^3.1.10"
   },
   "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node mongodb_server.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/emmanuelsegard/test.git"
