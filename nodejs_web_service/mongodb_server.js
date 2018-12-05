@@ -55,10 +55,10 @@ app
               if (err) throw err;
               console.log(result);
               if (result) {
-                res.writeHead(200, { "Content-Type": "text/html" });
+                res.writeHead(200, { "Content-Type": "text/plain" });
                 res.write(JSON.stringify(result));
               } else {
-                res.write("empty");
+                res.status(404).send('Document not found !');
               }
               res.end();
               db.close();
@@ -67,7 +67,34 @@ app
       }
     );
   })
+  .delete("/v1/key/:key", function(req, res) {
+    MongoClient.connect(
+      db_url,
+      { useNewUrlParser: true },
+      function(err, db) {
+        if (err) throw err;
+
+        var dbo = db.db(db_name);
+
+        ////////////////////////
+        // DOCUMENTS DELETION //
+        ////////////////////////
+
+        var del_q = { key: req.params.key };
+
+        dbo.collection(collection).deleteMany(del_q, function(err, obj) {
+          if (err) throw err;
+          console.log(obj.result.n + " document(s) deleted !");
+          res.writeHead(200, { "Content-Type": "text/plain" });
+          res.write(obj.result.n + " document(s) deleted !");
+          res.end();
+          db.close();
+        });
+      }
+    );
+  })
   .use(function(req, res, next) {
+    console.log("Unknown command !");
     res.setHeader("Content-Type", "text/plain");
     res.status(404).send("Unknown command !");
   });

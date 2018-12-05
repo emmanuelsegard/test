@@ -1,0 +1,7 @@
+{
+  "name": "mongodb-web-server-unitary-test",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node_modules/.bin/newman run test.json"
+  }
+}
