@@ -1,7 +1,10 @@
 var express = require("express");
 var app = express();
 var MongoClient = require("mongodb").MongoClient;
-var db_url = "mongodb://localhost:27017/";
+// For locally installed MongoDB, use localhost :
+//var db_url = "mongodb://localhost:27017/";
+// For local MongoDB Docker container, use the local IP address :
+var db_url = "mongodb://192.168.0.21:27017/";
 const collection = "esegard-collection";
 const db_name = "esegard-db";
 
