@@ -34,3 +34,7 @@ Newman REST API unitary tests for the MongoDB web server.
 In any case, once the server is running , run the test with :
 > cd unitary_test/  
 > npm test
+
+## Postman embedded test
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/c8affd3a389a17b0863a)
+
