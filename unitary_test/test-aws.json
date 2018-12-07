@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "c2c180aa-61fc-48f0-b4c9-aeb4f9a59257",
+		"name": "MongoDB AWS test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DELETE documents",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e3a35e11-208e-40d5-bda0-43b7951a4181",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-18-220-24-81.us-east-2.compute.amazonaws.com:80/v1/key/1001",
+					"protocol": "http",
+					"host": [
+						"ec2-18-220-24-81",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"v1",
+						"key",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET no document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4585ee1a-1b9f-487d-8eca-2031aeadaef9",
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});",
+							"pm.test(\"Body is correct\", function () {",
+							"    pm.response.to.have.body(\"Document not found !\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-18-220-24-81.us-east-2.compute.amazonaws.com:80/v1/key/1001",
+					"protocol": "http",
+					"host": [
+						"ec2-18-220-24-81",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"v1",
+						"key",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST insert document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1c8304ea-bf69-4a79-91e3-734c2a2b050b",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-18-220-24-81.us-east-2.compute.amazonaws.com:80/v1/key/1001/value/michel",
+					"protocol": "http",
+					"host": [
+						"ec2-18-220-24-81",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"v1",
+						"key",
+						"1001",
+						"value",
+						"michel"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET document",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4585ee1a-1b9f-487d-8eca-2031aeadaef9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Value for key 1001 is michel\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.value).to.eql('michel');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://ec2-18-220-24-81.us-east-2.compute.amazonaws.com:80/v1/key/1001",
+					"protocol": "http",
+					"host": [
+						"ec2-18-220-24-81",
+						"us-east-2",
+						"compute",
+						"amazonaws",
+						"com"
+					],
+					"port": "80",
+					"path": [
+						"v1",
+						"key",
+						"1001"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

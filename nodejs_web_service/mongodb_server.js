@@ -4,9 +4,15 @@ var MongoClient = require("mongodb").MongoClient;
 // For locally installed MongoDB, use localhost :
 //var db_url = "mongodb://localhost:27017/";
 // For local MongoDB Docker container, use the local IP address :
-var db_url = "mongodb://192.168.0.21:27017/";
+//var db_url = "mongodb://10.142.58.164:27017/";
+// For AWS deployed MongoDB Docker container, use the AWS EC2 public DSN :
+var db_url = "mongodb://ec2-18-220-24-81.us-east-2.compute.amazonaws.com:27017/";
 const collection = "esegard-collection";
 const db_name = "esegard-db";
+// For local server use :
+//const port = 8080;
+// For AWS deployed server user :
+const port = 80;
 
 app
   .post("/v1/key/:key/value/:value", function(req, res) {
@@ -102,4 +108,4 @@ app
     res.status(404).send("Unknown command !");
   });
 
-app.listen(8080);
+app.listen(port);
